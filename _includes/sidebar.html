@@ -17,27 +17,77 @@
   <!-- .profile-wrapper -->
 
   <nav class="flex-column flex-grow-1 w-100 ps-0">
-    <ul class="nav">
-      <!-- home -->
-      <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
-        <a href="{{ '/' | relative_url }}" class="nav-link">
-          <i class="fa-fw fas fa-home"></i>
-          <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
+    <!-- Category Tree View -->
+    {% assign total_posts = site.posts | size %}
+    {% if total_posts > 0 %}
+      <div class="category-tree">
+        <a href="{{ '/categories/' | relative_url }}" class="tree-total">
+          <i class="fa-fw fas fa-folder-open"></i>
+          <span>전체</span>
+          <span class="tree-count">{{ total_posts }}</span>
         </a>
-      </li>
-      <!-- the real tabs -->
-      {% for tab in site.tabs %}
-        <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
-          <a href="{{ tab.url | relative_url }}" class="nav-link">
-            <i class="fa-fw {{ tab.icon }}"></i>
-            {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
 
-            <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
-          </a>
-        </li>
-        <!-- .nav-item -->
-      {% endfor %}
-    </ul>
+        {% comment %} Build parent list from first category of each post {% endcomment %}
+        {% assign parents = "" | split: "" %}
+        {% for post in site.posts %}
+          {% if post.categories.size > 0 %}
+            {% assign p = post.categories | first %}
+            {% unless parents contains p %}
+              {% assign parents = parents | push: p %}
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
+        {% assign parents = parents | sort %}
+
+        {% for parent in parents %}
+          {% comment %} Collect posts and children for this parent {% endcomment %}
+          {% assign parent_posts = "" | split: "" %}
+          {% assign children = "" | split: "" %}
+          {% for post in site.posts %}
+            {% if post.categories[0] == parent %}
+              {% assign parent_posts = parent_posts | push: post %}
+              {% if post.categories.size > 1 %}
+                {% assign child = post.categories[1] %}
+                {% unless children contains child %}
+                  {% assign children = children | push: child %}
+                {% endunless %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          {% assign children = children | sort %}
+          {% assign parent_slug = parent | downcase | replace: ' ', '-' %}
+
+          {% if children.size > 0 %}
+            <details class="tree-parent" open>
+              <summary>
+                <a href="{{ '/categories/' | append: parent_slug | append: '/' | relative_url }}">{{ parent }}</a>
+                <span class="tree-count">{{ parent_posts.size }}</span>
+              </summary>
+              <ul class="tree-children">
+                {% for child in children %}
+                  {% assign child_count = 0 %}
+                  {% for post in parent_posts %}
+                    {% if post.categories[1] == child %}
+                      {% assign child_count = child_count | plus: 1 %}
+                    {% endif %}
+                  {% endfor %}
+                  {% assign child_slug = child | downcase | replace: ' ', '-' %}
+                  <li>
+                    <a href="{{ '/categories/' | append: child_slug | append: '/' | relative_url }}">{{ child }}</a>
+                    <span class="tree-count">{{ child_count }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            </details>
+          {% else %}
+            <div class="tree-leaf">
+              <a href="{{ '/categories/' | append: parent_slug | append: '/' | relative_url }}">{{ parent }}</a>
+              <span class="tree-count">{{ parent_posts.size }}</span>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
   </nav>
 
   <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
