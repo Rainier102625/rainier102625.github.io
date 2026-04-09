@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Ruby34-x64/lib/ruby/gems/3.4.0/gems/jekyll-theme-chirpy-7.5.0/_layouts/**)"
+    ]
+  }
+}
