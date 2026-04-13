@@ -7,12 +7,3 @@ image:
     path: /assets/img/react.jpg
 ---
 
-## 📋 Project Overview
-
-| 항목 | 내용 |
-| :--- | :--- |
-| 👤 **Role** | `FE` `Project Manager` |
-| 🔗 **Link** | [프로젝트 바로가기](https://github.com/사용자아이디/레포지토리) |
-| Stack | `Spring Boot` `Next.js` `MySQL` |
-
-## 1. 카테고리 만드는 법
