@@ -185,5 +185,19 @@
     height: 100%;
     object-fit: cover;
   }
+}
 
+#post-table {
+  text-align: center;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.post-table img {
+  width: 100% !important;
+  aspect-ratio: 3/4;
+  object-fit: contain;
+  background-color: var(--card-bg, #fff);
+  display: block;
+  margin: 0 auto;
 }

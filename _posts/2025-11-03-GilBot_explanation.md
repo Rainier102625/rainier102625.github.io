@@ -56,10 +56,10 @@ image:
   </tr>
   <tr>
     <td style="text-align:center;">
-      <img src="/assets/img/posts/JPPBank/JPP_Login.png " alt="로그인화면" width=350px>
+      <img src="/assets/img/posts/JPPBank/projectImage/JPP_Login.png " alt="로그인화면" width=350px>
     </td>
     <td style="text-align:center;">
-      <img src="/assets/img/posts/JPPBank/JPP_SignUp.png" alt="회원가입" width=280px>
+      <img src="/assets/img/posts/JPPBank/projectImage/JPP_SignUp.png" alt="회원가입" width=280px>
     </td>
   </tr>
   <tr>
@@ -68,10 +68,10 @@ image:
   </tr>
   <tr>
     <td style="text-align:center;">
-      <img src="/assets/img/posts/JPPBank/JPP_Notice.png " alt="로그인화면" width=350px>
+      <img src="/assets/img/posts/JPPBank/projectImage/JPP_Notice.png " alt="로그인화면" width=350px>
     </td>
     <td style="text-align:center;">
-      <img src="/assets/img/posts/JPPBank/JPP_Notice_Create.png" alt="회원가입" width=280px>
+      <img src="/assets/img/posts/JPPBank/projectImage/JPP_Notice_Create.png" alt="회원가입" width=280px>
     </td>
   </tr>
 
