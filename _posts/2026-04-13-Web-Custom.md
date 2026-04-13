@@ -3,8 +3,6 @@ title: "contextmenu 제어"
 date: 2026-04-13 07:00:00 +0900
 categories: [CSS]
 tags: [CSS, HTML]
-image:
-    path:
 ---
 
 ## 이미지 우클릭, 드래그 제어  
