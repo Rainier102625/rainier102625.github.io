@@ -1,6 +1,6 @@
 ---
 title: "노마드 코더 Day7"
-date: 2025-08-11 18:00:00 +0900
+date: 2026-04-30 03:15:00 +0900
 categories: [Study]
 tags: [javascript,CSS,html]
 ---
